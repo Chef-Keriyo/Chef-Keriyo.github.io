@@ -3,6 +3,8 @@
     pre {
       color: honeydew;
       text-align: center;
+      font-size: 120%;
+      font-family: helvetica;
     }
 
     body {
@@ -12,15 +14,31 @@
   </style>
 
   <body>
-<pre>
 
-
-</pre>
     <pre>
-test
+
 
 </pre>
 
+    <pre id="wall">
+</pre>
+    <script>
+      fetch('https://raw.githubusercontent.com/Chef-Keriyo/Chef-Keriyo.github.io/main/wall%20of%20text.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById("wall").innerHTML = data;
+           
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+        });
+
+    </script>
   </body>
 
 </html>
